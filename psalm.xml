@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<psalm
+        cacheDirectory="var/cache/psalm"
+        ensureArrayStringOffsetsExist="true"
+        findUnusedVariablesAndParams="true"
+        allowStringToStandInForClass="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd">
+
+    <projectFiles>
+        <directory name="."/>
+
+        <ignoreFiles allowMissingFiles="true">
+            <directory name="./vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+    </plugins>
+
+    <issueHandlers>
+        <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
+
+        <DeprecatedMethod errorLevel="info"/>
+        <DeprecatedProperty errorLevel="info"/>
+        <DeprecatedClass errorLevel="info"/>
+        <DeprecatedConstant errorLevel="info"/>
+        <DeprecatedFunction errorLevel="info"/>
+        <DeprecatedInterface errorLevel="info"/>
+        <DeprecatedTrait errorLevel="info"/>
+
+        <InternalMethod errorLevel="info"/>
+        <InternalProperty errorLevel="info"/>
+        <InternalClass errorLevel="info"/>
+
+        <MissingClosureReturnType errorLevel="info"/>
+        <MissingReturnType errorLevel="info"/>
+        <MissingPropertyType errorLevel="info"/>
+        <InvalidDocblock errorLevel="info"/>
+
+        <PropertyNotSetInConstructor errorLevel="info"/>
+        <MissingConstructor errorLevel="info"/>
+        <MissingClosureParamType errorLevel="info"/>
+        <MissingParamType errorLevel="info"/>
+
+        <RedundantCondition errorLevel="info"/>
+
+        <DocblockTypeContradiction errorLevel="info"/>
+        <RedundantConditionGivenDocblockType errorLevel="info"/>
+
+        <UnresolvableInclude errorLevel="info"/>
+
+        <RawObjectIteration errorLevel="info"/>
+
+        <InvalidStringClass errorLevel="info"/>
+
+        <!-- level 4 issues - points to possible deficiencies in logic, higher false-positives -->
+
+        <MoreSpecificReturnType errorLevel="info"/>
+        <LessSpecificReturnStatement errorLevel="info"/>
+        <PropertyTypeCoercion errorLevel="info"/>
+        <ArgumentTypeCoercion errorLevel="info"/>
+
+        <PossiblyFalseReference errorLevel="info"/>
+        <PossiblyInvalidArrayAccess errorLevel="info"/>
+        <PossiblyInvalidArrayAssignment errorLevel="info"/>
+        <PossiblyInvalidCast errorLevel="info"/>
+        <PossiblyInvalidFunctionCall errorLevel="info"/>
+        <PossiblyInvalidIterator errorLevel="info"/>
+        <PossiblyInvalidMethodCall errorLevel="info"/>
+        <PossiblyNullArrayAccess errorLevel="info"/>
+        <PossiblyNullArrayAssignment errorLevel="info"/>
+        <PossiblyNullArrayOffset errorLevel="info"/>
+        <PossiblyNullIterator errorLevel="info"/>
+        <PossiblyNullPropertyFetch errorLevel="info"/>
+        <PossiblyNullReference errorLevel="info"/>
+        <PossiblyUndefinedVariable errorLevel="info"/>
+        <PossiblyUndefinedArrayOffset errorLevel="info"/>
+        <PossiblyUndefinedMethod errorLevel="info"/>
+
+        <!-- level 5 issues - should be avoided at mosts costs... -->
+
+        <ImplicitToStringCast errorLevel="info"/>
+        <InvalidScalarArgument errorLevel="info"/>
+        <InvalidOperand errorLevel="info"/>
+        <TooManyArguments errorLevel="info"/>
+        <TypeDoesNotContainType errorLevel="info"/>
+        <ImplementedReturnTypeMismatch errorLevel="info"/>
+
+        <!-- level 6 issues - really bad things -->
+
+        <InvalidNullableReturnType errorLevel="info"/>
+        <NullableReturnStatement errorLevel="info"/>
+        <InvalidFalsableReturnType errorLevel="info"/>
+        <FalsableReturnStatement errorLevel="info"/>
+
+        <MoreSpecificImplementedParamType errorLevel="info"/>
+
+        <InvalidReturnStatement errorLevel="info"/>
+        <InvalidReturnType errorLevel="info"/>
+        <UndefinedInterfaceMethod errorLevel="info"/>
+
+        <!-- level 7 issues - even worse -->
+
+        <UndefinedPropertyAssignment errorLevel="info"/>
+        <UndefinedThisPropertyFetch errorLevel="info"/>
+        <UndefinedPropertyFetch errorLevel="info"/>
+
+        <InvalidArgument errorLevel="info"/>
+        <InvalidPropertyAssignmentValue errorLevel="info"/>
+        <InvalidArrayOffset errorLevel="info"/>
+
+        <!-- Does not agree on a type with phpstan after the symfony 5.3 update -->
+        <RedundantCastGivenDocblockType errorLevel="info" />
+
+        <!-- Should be fixed some day :-) -->
+        <PossiblyUndefinedArrayOffset errorLevel="info"/>
+        <PropertyNotSetInConstructor errorLevel="info"/>
+    </issueHandlers>
+</psalm>
